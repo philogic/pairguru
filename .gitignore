@@ -74,3 +74,4 @@ fabric.properties
 out
 gen
 /vendor/assets/javascripts/.keep
+/log/.keep
