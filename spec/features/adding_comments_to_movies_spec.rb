@@ -20,6 +20,6 @@ RSpec.feature 'Adding comments to movies' do
 
     expect(page).to have_content('Comment has been created')
     expect(page).to have_content('Very good film!')
-    expect(current_path).to eq(movie_path(@movie.id))
+    expect(current_path).to eq(movie_path(movie.id))
   end
 end
