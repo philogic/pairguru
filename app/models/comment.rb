@@ -14,5 +14,6 @@ class Comment < ApplicationRecord
   belongs_to :movie
   belongs_to :user
 
-  validates :content, presence: true
+  validates_presence_of :content
+  validates_uniqueness_of :content, scope: :user_id
 end
