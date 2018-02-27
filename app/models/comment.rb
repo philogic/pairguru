@@ -15,5 +15,5 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   validates_presence_of :content
-  validates_uniqueness_of :content, scope: :user_id
+  validates_uniqueness_of :movie_id, {  scope: :user_id, message: 'You can submit only one review per movie!' }
 end

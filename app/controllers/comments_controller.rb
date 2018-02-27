@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_movie
+
 
   def create
     @comment = @movie.comments.build(comment_params)
@@ -9,7 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = "Comment has been created"
     else
-      flash.now[:alert] = "Comment has not been created"
+      flash[:alert] = "Sorry, you can't add this comment: #{@comment.errors.full_messages.to_sentence}"
     end
     redirect_to movie_path(@movie)
   end

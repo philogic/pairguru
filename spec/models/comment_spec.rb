@@ -14,5 +14,9 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   it { should validate_presence_of(:content) }
-  it { should validate_uniqueness_of(:content).scoped_to(:user_id) }
+  it do
+    should validate_uniqueness_of(:movie_id).scoped_to(:user_id).
+      with_message('You can submit only one review per movie!')
+  end
+
 end
