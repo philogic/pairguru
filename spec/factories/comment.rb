@@ -12,8 +12,8 @@
 
 FactoryBot.define do
   factory :comment do
-    content "MyText"
-    movie nil
-    user nil
+    content "Very ood film!"
+    movie
+    user
   end
 end
