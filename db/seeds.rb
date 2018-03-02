@@ -1,5 +1,15 @@
 require "faker"
 
+Comment.delete_all
+
+Movie.delete_all
+
+Genre.delete_all
+
+User.delete_all
+
+
+
 Rails.logger = Logger.new(STDOUT)
 
 Rails.logger.info "Creating users..."
@@ -81,4 +91,17 @@ if Movie.count < 100
       released_at: Date.new(movie[:release_year].to_i)
     )
   end
+end
+
+Rails.logger.info "Creating comments..."
+
+user_ids = User.pluck(:id)
+movie_ids = Movie.pluck(:id)
+
+50.times do
+  Comment.create!(
+             content: Faker::Lorem.sentence,
+             user_id: user_ids.sample,
+             movie_id: movie_ids.sample
+  )
 end
