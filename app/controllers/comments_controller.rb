@@ -16,6 +16,12 @@ class CommentsController < ApplicationController
     redirect_to movie_path(@movie)
   end
 
+  def destroy
+    @comment = @movie.comments.find(params[:id])
+    @comment.destroy
+    redirect_to movie_path(@movie)
+  end
+
   private
 
   def set_movie

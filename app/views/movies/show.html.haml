@@ -22,11 +22,22 @@
 
 .col-md-12
   %header
-    %h2 Comments
+    %h2.text-center Comments
   .col-md-10
-    - if @movie.comments.any?
+    - if @comments.any?
       - saved_comments(@comments).each do |comment|
-        = comment.content
-        = time_ago_in_words(comment.created_at)
-        ago by
-        = comment.user.name
+        .well
+          %p
+            %strong= comment.content
+          %p
+            = time_ago_in_words(comment.created_at)
+            ago by
+            = comment.user.name
+          - if comment.user == current_user
+            = link_to 'Delete', [comment.movie, comment],
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' }
+
+    - if @comments.count == 0 # else didn't work here
+      %h3 No comments yet. Place your first comment.
+
