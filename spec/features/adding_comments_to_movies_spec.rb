@@ -5,9 +5,8 @@ RSpec.feature 'Adding comments to movies' do
     @user = FactoryBot.create(:user)
     @movie = FactoryBot.create(:movie)
   end
-
   scenario 'permits authenticated user to add a comment' do
-    login_as(@user)
+    login_as @user
     visit '/'
     click_link 'Movies'
     click_link @movie.title
@@ -21,7 +20,7 @@ RSpec.feature 'Adding comments to movies' do
   end
 
   scenario 'does not permit authenticated user to add another comment for the same movie' do
-    login_as(@user)
+    login_as @user
     visit '/'
     click_link 'Movies'
     click_link @movie.title

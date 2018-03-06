@@ -11,9 +11,14 @@
 #
 
 class Comment < ApplicationRecord
+  before_create :has_comment?
   belongs_to :movie
-  belongs_to :user
+  belongs_to :user, inverse_of: :comments
 
   validates_presence_of :content
-  validates_uniqueness_of :movie_id, {  on: :create, scope: :user_id, message: 'You can submit only one review per movie!' }
+  validates :movie_id, uniqueness:  { scope: :user_id, message: 'You can write only one comment per movie!' }
+
+  def has_comment?
+    return if Comment.exists?(user_id: user_id, movie_id: movie_id)
+  end
 end
