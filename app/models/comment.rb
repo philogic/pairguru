@@ -17,7 +17,7 @@ class Comment < ApplicationRecord
 
 
   validates_presence_of :content
-  validates :movie_id, uniqueness:  { scope: :user_id, message: 'You can write only one comment per movie!' }
+  validates :movie_id, uniqueness:  { scope: :user_id, message: 'You can submit only one comment per movie!' }
 
   def has_comment?
     return if Comment.exists?(user_id: user_id, movie_id: movie_id)
