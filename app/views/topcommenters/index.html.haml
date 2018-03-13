@@ -1,0 +1,14 @@
+.row
+  .col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
+    %h1.text-center Hall Of Fame
+    %h3.text-center Users who created most comments
+
+    %table.table.table-striped
+      %tbody
+        - @topcommenters.each_with_index do |user, i|
+          %tr
+            %td= i + 1
+            %td
+              %h6= user.name
+            %td
+              %strong= user.comments_count

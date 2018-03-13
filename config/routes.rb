@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+
   root "home#welcome"
   resources :genres, only: :index do
     member do
@@ -16,4 +17,7 @@ Rails.application.routes.draw do
       get :export
     end
   end
+
+  resources :topcommenters, only: [:index, :show]
+
 end

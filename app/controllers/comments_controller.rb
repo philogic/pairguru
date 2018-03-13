@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_movie
 
-
   def create
     @comment = @movie.comments.build(comment_params)
     @comment.user = current_user

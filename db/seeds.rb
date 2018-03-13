@@ -101,6 +101,7 @@ movie_ids = Movie.pluck(:id)
   Comment.create!(
        content: Faker::Lorem.sentence,
        user_id: user_ids.sample,
-       movie_id: movie_ids.sample
+       movie_id: movie_ids.sample,
+       created_at: Faker::Date.between(3.weeks.ago, Date.today)
   )
 end
