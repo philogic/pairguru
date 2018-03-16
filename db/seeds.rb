@@ -9,7 +9,6 @@ Genre.delete_all
 User.delete_all
 
 
-
 Rails.logger = Logger.new(STDOUT)
 
 Rails.logger.info "Creating users..."
@@ -98,7 +97,7 @@ Rails.logger.info "Creating comments..."
 user_ids = User.pluck(:id)
 movie_ids = Movie.pluck(:id)
 170.times do
-  Comment.create!(
+  Comment.create(
        content: Faker::Lorem.sentence,
        user_id: user_ids.sample,
        movie_id: movie_ids.sample,

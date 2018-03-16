@@ -9,10 +9,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+require 'faker'
 
 FactoryBot.define do
   factory :comment do
-    content "Very ood film!"
+    content { Faker::Lorem.sentence(3, true) }
     movie
     user
   end
